@@ -112,3 +112,14 @@ function hundlertransfer(event){
     });
 }
 
+let html = "";
+for (let i=0;i<user.wallet.transactions.length;i++) {
+    const t=user.wallet.transactions[i];
+    if (t.type==="credit") {
+        html+="<div class='transaction-item'>" + t.from + " " + t.date + " <span style='color:green'>+" + t.amount + " MAD</span></div>";
+    } 
+    else {
+        html += "<div class='transaction-item'>" + t.to + " " + t.date + " <span style='color:red'>-" + t.amount + " MAD</span></div>";
+    }
+}
+document.getElementById("recentTransactionsList").innerHTML = html;
